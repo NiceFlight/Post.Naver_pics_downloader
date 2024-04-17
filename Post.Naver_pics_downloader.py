@@ -33,7 +33,7 @@ for img in imgs:
         continue
 
     # 尋找並建立圖片檔案名稱
-    filename = src.split("/")[-1].split(".")[0]
+    filename = quote(urlparse(src).path.split("/")[-1].split(".")[0])
     extension = src.split(".")[-1].split("?")[0]
     if extension in allow_file_name:
         print(f"file type：{extension}")
