@@ -34,7 +34,7 @@ else:
         if not src:
             continue
         # 尋找並建立圖片檔案名稱
-        filename = quote(urlparse(src).path.split("/")[-1].split(".")[0])
+        file_name = quote(urlparse(src).path.split("/")[-1].split(".")[0])
         extension = src.split(".")[-1].split("?")[0]
         if extension in allow_file_name:
             print(f"file type：{extension}")
@@ -48,9 +48,9 @@ else:
             download = requests.get(src.split("?")[0], headers=headers, stream=True)
             if download.status_code == 200:
                 # 儲存圖片
-                with open(f"images/{url.split("=")[-1]}/{filename}.{extension}", 'wb') as file:
+                with open(f"images/{url.split("=")[-1]}/{file_name}.{extension}", 'wb') as file:
                     file.write(download.content)
-                print(f"{filename} downloading{"." * 20}\n")
+                print(f"{file_name} downloading{"." * 20}\n")
                 # time.sleep(3)
             else:
                 print(f"No file founded\n")
