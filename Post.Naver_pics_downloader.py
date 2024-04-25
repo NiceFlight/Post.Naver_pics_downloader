@@ -48,7 +48,7 @@ else:
             download = requests.get(src.split("?")[0], headers=headers, stream=True)
             if download.status_code == 200:
                 # 儲存圖片
-                with open(f"images/{url.split("=")[-1]}/{file_name}.{extension}", 'wb') as file:
+                with open(f"{dir_namee}/{file_name}.{extension}", 'wb') as file:
                     file.write(download.content)
                 print(f"{file_name} downloading{"." * 20}\n")
                 # time.sleep(3)
