@@ -26,7 +26,7 @@ else:
     else:
         print(f"file existed\n")
     # 找目標網址的標籤
-    imgs = soup.find_all("img")
+    imgs = soup.find_all("img", class_="se_mediaImage __se_img_el")
     allow_file_name = ["jpg", "png", "jpeg", "gif"]
     for img in imgs:
         # 找目標網址
