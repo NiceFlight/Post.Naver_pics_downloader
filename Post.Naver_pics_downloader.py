@@ -1,8 +1,10 @@
 import os
 import time
+import re
 import requests
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from urllib.parse import unquote, urlparse
 
 # 確認網址符合規範
 url = input(f"Enter link address:")
