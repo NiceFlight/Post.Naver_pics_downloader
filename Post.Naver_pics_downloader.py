@@ -21,7 +21,7 @@ else:
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # 建立資料夾
     print(dir)
-    dir_name = f"images/{url.split("=")[-1]}"
+    dir_name = f"{url.split("=")[-1]}"
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
         print(f"file created successed\n")
@@ -50,7 +50,7 @@ else:
             download = requests.get(src.split("?")[0], headers=headers, stream=True)
             if download.status_code == 200:
                 # 儲存圖片
-                with open(f"{dir_namee}/{file_name}.{extension}", 'wb') as file:
+                with open(f"{dir_name}/{file_name}.{extension}", 'wb') as file:
                     file.write(download.content)
                 print(f"{file_name} downloading{"." * 20}\n")
                 # time.sleep(3)
