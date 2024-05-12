@@ -12,13 +12,6 @@ pattern = r"https:\/\/post\.naver\.com\/viewer\/postView\.naver\?volumeNo=([0-9]
 if not re.match(pattern, url):
     print(f"The link doesn't meet the criteria.")
 else:
-    # 用 selenium 建立目標網站連線
-    driver = webdriver.Chrome()
-    driver.get(url)
-    # 待網頁載入
-    time.sleep(3)
-    # 用 beautifulsoup 解析
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
     # 建立資料夾
     dir_name = f"{url.split("=")[-1]}"
     if not os.path.exists(dir_name):
@@ -26,6 +19,15 @@ else:
         print(f"file created successful\n")
     else:
         print(f"file existed\n")
+    
+    # 用 selenium 建立目標網站連線
+    driver = webdriver.Chrome()
+    driver.get(url)
+    # 待網頁載入
+    time.sleep(3)
+    # 用 beautifulsoup 解析
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    
     # 找目標網址的標籤
     imgs = soup.find_all("img", class_="se_mediaImage __se_img_el")
     allow_file_name = ["jpg", "png", "jpeg", "gif"]
