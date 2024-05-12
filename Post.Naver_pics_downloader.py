@@ -20,11 +20,10 @@ else:
     # 用 beautifulsoup 解析
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # 建立資料夾
-    print(dir)
     dir_name = f"{url.split("=")[-1]}"
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
-        print(f"file created successed\n")
+        print(f"file created successful\n")
     else:
         print(f"file existed\n")
     # 找目標網址的標籤
