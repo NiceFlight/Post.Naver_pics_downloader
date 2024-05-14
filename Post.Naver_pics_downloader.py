@@ -8,8 +8,9 @@ from urllib.parse import unquote, urlparse
 
 # 確認網址符合規範
 url = input(f"Enter link address:")
-pattern = r"https:\/\/post\.naver\.com\/viewer\/postView\.naver\?volumeNo=([0-9]{8})"
-if not re.match(pattern, url):
+pattern1 = r"https:\/\/post\.naver\.com\/viewer\/postView\.naver\?volumeNo=([0-9]{8})"
+pattern2 = r"https:\/\/post\.naver\.com\/viewer\/postView\.naver\?volumeNo=([0-9]{8})\&memberNo=([0-9]{8})"
+if not re.fullmatch(pattern1, url) and not re.fullmatch(pattern2, url):
     print(f"The link doesn't meet the criteria.")
 else:
     # 建立資料夾
