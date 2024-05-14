@@ -58,4 +58,4 @@ else:
                 # time.sleep(3)
             else:
                 print(f"No file founded\n")
-    driver.close()
+    driver.quit()
