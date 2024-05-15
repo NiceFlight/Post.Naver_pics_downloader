@@ -18,7 +18,6 @@ def downloader(picurl, savePath):
         # 儲存圖片
         with open(savePath, 'wb') as file:
             file.write(download.content)
-        # time.sleep(3)
     else:
         print(f"No file founded\n")
 
@@ -26,9 +25,7 @@ def downloader(picurl, savePath):
 def main():
     # 確認網址符合規範
     url = input(f"Enter link address:")
-    # https://post.naver.com/viewer/postView.naver?volumeNo=37653713
     pattern1 = r"https:\/\/post\.naver\.com\/viewer\/postView\.naver\?volumeNo=([0-9]{8})"
-    # https://post.naver.com/viewer/postView.naver?volumeNo=36936404&memberNo=51071215
     pattern2 = r"https:\/\/post\.naver\.com\/viewer\/postView\.naver\?volumeNo=([0-9]{8})\&memberNo=([0-9]{8})"
     if not re.fullmatch(pattern1, url) and not re.fullmatch(pattern2, url):
         print(f"The link doesn't meet the criteria.")
@@ -50,25 +47,19 @@ def main():
 
         # 用 beautifulsoup 解析
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        # print(soup)
 
         # 找目標網址的標籤
         imgs = soup.find_all("img", class_="se_mediaImage __se_img_el")
         allowFileType = ["jpg", "png", "jpeg", "gif"]
-        # print(len(imgs))
         for img in imgs:
             # 找目標網址
             src = img.get("src")
-            # print(src)
             if not src:
                 continue
             # 尋找並建立圖片檔案名稱
             fileName = unquote(urlparse(src).path.split("/")[-1].split(".")[0])
-            # print(filename)
             extension = src.split(".")[-1].split("?")[0]
-            # print(extension)
             if extension in allowFileType:
-                # print(src)
                 print(f"file type：{extension}")
                 print(f"url:{src}")
                 # 建立下載連線
