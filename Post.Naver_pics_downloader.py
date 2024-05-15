@@ -55,7 +55,6 @@ else:
                 with open(f"{dir_name}/{file_name}.{extension}", 'wb') as file:
                     file.write(download.content)
                 print(f"{file_name} downloading{"." * 20}\n")
-                # time.sleep(3)
             else:
                 print(f"No file founded\n")
     driver.quit()
