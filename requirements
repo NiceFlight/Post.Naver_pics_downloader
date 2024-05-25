@@ -3,6 +3,7 @@ os
 time
 requests
 selenium
+chrome webdriver
 BeautifulSoup
 urllib
 re
